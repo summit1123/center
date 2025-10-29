@@ -18,6 +18,7 @@ import {
   CheckCircle,
   Clock,
   MessagesSquare,
+  PenTool,
 } from "lucide-react"
 import Link from "next/link"
 import {
@@ -57,62 +58,76 @@ const weeklyProgress = [
 ]
 
 const supportDistribution = [
-  { name: "학습 지원", value: 3, color: "#3b82f6" },
-  { name: "정서 지원", value: 1, color: "#ef4444" },
-  { name: "사회성 지원", value: 1, color: "#a855f7" },
-  { name: "행동 지원", value: 1, color: "#f97316" },
+  { name: "학습 지원", value: 3, color: "#4A90E2" },
+  { name: "정서 지원", value: 1, color: "#FF6B9D" },
+  { name: "사회성 지원", value: 1, color: "#9B59B6" },
+  { name: "행동 지원", value: 1, color: "#FF8F47" },
 ]
 
 export function OverviewDashboard() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-cream-white">
       {/* Sidebar Navigation */}
-      <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r bg-card">
-        <div className="flex h-16 items-center border-b px-6">
-          <BookOpen className="mr-2 h-6 w-6 text-primary" />
-          <span className="text-lg font-semibold">학생 지원 플랫폼</span>
+      <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r bg-white shadow-soft">
+        <div className="flex h-16 items-center border-b border-warm-gray px-6 bg-gradient-to-r from-sky-blue to-mint-green">
+          <BookOpen className="mr-3 h-6 w-6 text-white" />
+          <span className="text-lg font-bold text-white">학생 지원 플랫폼</span>
         </div>
-        <nav className="space-y-1 p-4">
+        <nav className="space-y-2 p-6">
           <Link href="/">
-            <Button variant="secondary" className="w-full justify-start">
-              <Activity className="mr-2 h-4 w-4" />
+            <Button variant="ghost" className="w-full justify-start h-12 bg-sky-blue/10 text-sky-blue hover:bg-sky-blue hover:text-white transition-all duration-200 font-medium">
+              <Activity className="mr-3 h-5 w-5" />
               전체 현황
             </Button>
           </Link>
           <Link href="/student-profile">
-            <Button variant="ghost" className="w-full justify-start">
-              <User className="mr-2 h-4 w-4" />
+            <Button variant="ghost" className="w-full justify-start h-12 text-navy-text hover:bg-mint-green hover:text-white transition-all duration-200">
+              <User className="mr-3 h-5 w-5" />
               학생 프로필
             </Button>
           </Link>
+          <Link href="/student-management">
+            <Button variant="ghost" className="w-full justify-start h-12 text-navy-text hover:bg-mint-green hover:text-white transition-all duration-200">
+              <Users className="mr-3 h-5 w-5" />
+              학생 관리
+            </Button>
+          </Link>
+          <Link href="/teacher-report">
+            <Button variant="ghost" className="w-full justify-start h-12 text-navy-text hover:bg-coral-pink hover:text-white transition-all duration-200">
+              <PenTool className="mr-3 h-5 w-5" />
+              선생님 보고서
+            </Button>
+          </Link>
           <Link href="/collaboration">
-            <Button variant="ghost" className="w-full justify-start">
-              <MessageSquare className="mr-2 h-4 w-4" />
+            <Button variant="ghost" className="w-full justify-start h-12 text-navy-text hover:bg-coral-pink hover:text-white transition-all duration-200">
+              <MessageSquare className="mr-3 h-5 w-5" />
               협업 채널
             </Button>
           </Link>
           <Link href="/ai-intervention">
-            <Button variant="ghost" className="w-full justify-start">
-              <Brain className="mr-2 h-4 w-4" />
+            <Button variant="ghost" className="w-full justify-start h-12 text-navy-text hover:bg-purple-accent hover:text-white transition-all duration-200">
+              <Brain className="mr-3 h-5 w-5" />
               AI 추천 도구
             </Button>
           </Link>
           <Link href="/analytics">
-            <Button variant="ghost" className="w-full justify-start">
-              <TrendingUp className="mr-2 h-4 w-4" />
+            <Button variant="ghost" className="w-full justify-start h-12 text-navy-text hover:bg-sunshine-yellow hover:text-white transition-all duration-200">
+              <TrendingUp className="mr-3 h-5 w-5" />
               프로젝트 분석
             </Button>
           </Link>
           <Link href="/community">
-            <Button variant="ghost" className="w-full justify-start">
-              <MessagesSquare className="mr-2 h-4 w-4" />
+            <Button variant="ghost" className="w-full justify-start h-12 text-navy-text hover:bg-warm-orange hover:text-white transition-all duration-200">
+              <MessagesSquare className="mr-3 h-5 w-5" />
               커뮤니티
             </Button>
           </Link>
-          <Button variant="ghost" className="w-full justify-start">
-            <Settings className="mr-2 h-4 w-4" />
-            설정
-          </Button>
+          <div className="border-t border-warm-gray mt-4 pt-4">
+            <Button variant="ghost" className="w-full justify-start h-12 text-soft-text hover:bg-light-gray transition-all duration-200">
+              <Settings className="mr-3 h-5 w-5" />
+              설정
+            </Button>
+          </div>
         </nav>
       </aside>
 
@@ -121,83 +136,104 @@ export function OverviewDashboard() {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-              <Activity className="h-6 w-6 text-primary" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-sky shadow-blue">
+              <Activity className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold">전체 현황</h1>
-              <p className="text-muted-foreground">강원도 추천초등학교 2학년 3반</p>
+              <h1 className="text-3xl font-bold text-navy-text">전체 현황</h1>
+              <p className="text-soft-text">강원도 추천초등학교 2학년 3반</p>
             </div>
           </div>
         </div>
 
         {/* Key Metrics */}
-        <div className="mb-8 grid gap-4 md:grid-cols-4">
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-                <Users className="h-4 w-4" />
+        <div className="mb-8 grid gap-6 md:grid-cols-4">
+          <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-white to-sky-blue/5 shadow-soft hover:shadow-blue transition-all duration-300 hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-sky-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <CardHeader className="pb-3 relative z-10">
+              <CardTitle className="flex items-center gap-3 text-sm font-medium text-soft-text">
+                <div className="p-2 rounded-lg bg-sky-blue/10">
+                  <Users className="h-4 w-4 text-sky-blue" />
+                </div>
                 전체 학생 수
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold">{overviewStats.totalStudents}</div>
-              <p className="mt-1 text-sm text-muted-foreground">경계선 지적기능 학생</p>
+            <CardContent className="relative z-10">
+              <div className="text-3xl font-bold text-navy-text">{overviewStats.totalStudents}</div>
+              <p className="mt-2 text-sm text-soft-text">경계선 지적기능 학생</p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-                <CheckCircle className="h-4 w-4" />
+          <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-white to-mint-green/5 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-mint-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <CardHeader className="pb-3 relative z-10">
+              <CardTitle className="flex items-center gap-3 text-sm font-medium text-soft-text">
+                <div className="p-2 rounded-lg bg-mint-green/10">
+                  <CheckCircle className="h-4 w-4 text-mint-green" />
+                </div>
                 지원 중인 학생
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold">{overviewStats.receivingSupport}</div>
-              <p className="mt-1 flex items-center text-sm text-green-500">
-                <ArrowUp className="mr-1 h-3 w-3" />
-                전체의 {((overviewStats.receivingSupport / overviewStats.totalStudents) * 100).toFixed(0)}%
-              </p>
+            <CardContent className="relative z-10">
+              <div className="text-3xl font-bold text-navy-text">{overviewStats.receivingSupport}</div>
+              <div className="mt-2 flex items-center text-sm">
+                <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-mint-green/10 text-mint-green">
+                  <ArrowUp className="h-3 w-3" />
+                  전체의 {((overviewStats.receivingSupport / overviewStats.totalStudents) * 100).toFixed(0)}%
+                </div>
+              </div>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-                <AlertCircle className="h-4 w-4" />
+          <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-white to-coral-pink/5 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-coral-pink/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <CardHeader className="pb-3 relative z-10">
+              <CardTitle className="flex items-center gap-3 text-sm font-medium text-soft-text">
+                <div className="p-2 rounded-lg bg-coral-pink/10">
+                  <AlertCircle className="h-4 w-4 text-coral-pink" />
+                </div>
                 주의 필요
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold">{overviewStats.needsAttention}</div>
-              <p className="mt-1 text-sm text-muted-foreground">즉각적인 개입 필요</p>
+            <CardContent className="relative z-10">
+              <div className="text-3xl font-bold text-navy-text">{overviewStats.needsAttention}</div>
+              <p className="mt-2 text-sm text-soft-text">즉각적인 개입 필요</p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-                <GraduationCap className="h-4 w-4" />
+          <Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-white to-sunshine-yellow/5 shadow-soft hover:shadow-yellow transition-all duration-300 hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-sunshine-yellow/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <CardHeader className="pb-3 relative z-10">
+              <CardTitle className="flex items-center gap-3 text-sm font-medium text-soft-text">
+                <div className="p-2 rounded-lg bg-sunshine-yellow/10">
+                  <GraduationCap className="h-4 w-4 text-sunshine-yellow" />
+                </div>
                 평균 개선율
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold">78%</div>
-              <p className="mt-1 flex items-center text-sm text-green-500">
-                <ArrowUp className="mr-1 h-3 w-3" />
-                +3.2% 전월 대비
-              </p>
+            <CardContent className="relative z-10">
+              <div className="text-3xl font-bold text-navy-text">78%</div>
+              <div className="mt-2 flex items-center text-sm">
+                <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-mint-green/10 text-mint-green">
+                  <ArrowUp className="h-3 w-3" />
+                  +3.2% 전월 대비
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
           {/* Weekly Progress Chart */}
-          <Card>
-            <CardHeader>
-              <CardTitle>주간 중재 활동</CardTitle>
-              <CardDescription>이번 주 계획 대비 완료 현황</CardDescription>
+          <Card className="border-0 bg-gradient-to-br from-white to-mint-green/3 shadow-medium hover:shadow-strong transition-all duration-300">
+            <CardHeader className="pb-6">
+              <CardTitle className="flex items-center gap-2 text-navy-text">
+                <div className="p-2 rounded-lg bg-mint-green/10">
+                  <TrendingUp className="h-5 w-5 text-mint-green" />
+                </div>
+                주간 중재 활동
+              </CardTitle>
+              <CardDescription className="text-soft-text">이번 주 계획 대비 완료 현황</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -207,18 +243,23 @@ export function OverviewDashboard() {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="completed" fill="#22c55e" name="완료" />
-                  <Bar dataKey="planned" fill="#94a3b8" name="계획" />
+                  <Bar dataKey="completed" fill="#7ED4AD" name="완료" />
+                  <Bar dataKey="planned" fill="#F0F2F5" name="계획" />
                 </BarChart>
               </ResponsiveContainer>
             </CardContent>
           </Card>
 
           {/* Support Distribution */}
-          <Card>
-            <CardHeader>
-              <CardTitle>지원 유형별 분포</CardTitle>
-              <CardDescription>현재 진행 중인 지원 프로그램</CardDescription>
+          <Card className="border-0 bg-gradient-to-br from-white to-sky-blue/3 shadow-medium hover:shadow-blue transition-all duration-300">
+            <CardHeader className="pb-6">
+              <CardTitle className="flex items-center gap-2 text-navy-text">
+                <div className="p-2 rounded-lg bg-sky-blue/10">
+                  <Users className="h-5 w-5 text-sky-blue" />
+                </div>
+                지원 유형별 분포
+              </CardTitle>
+              <CardDescription className="text-soft-text">현재 진행 중인 지원 프로그램</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -246,24 +287,29 @@ export function OverviewDashboard() {
 
         {/* Recent Activity & Quick Actions */}
         <div className="mt-6 grid gap-6 md:grid-cols-3">
-          <Card className="md:col-span-2">
-            <CardHeader>
-              <CardTitle>최근 활동</CardTitle>
-              <CardDescription>실시간 학생 지원 활동 현황</CardDescription>
+          <Card className="md:col-span-2 border-0 bg-gradient-to-br from-white to-warm-gray/20 shadow-medium">
+            <CardHeader className="pb-6">
+              <CardTitle className="flex items-center gap-2 text-navy-text">
+                <div className="p-2 rounded-lg bg-warm-orange/10">
+                  <Activity className="h-5 w-5 text-warm-orange" />
+                </div>
+                최근 활동
+              </CardTitle>
+              <CardDescription className="text-soft-text">실시간 학생 지원 활동 현황</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 {recentActivity.map((activity, idx) => (
-                  <div key={idx} className="flex items-center gap-3 rounded-lg border p-3">
+                  <div key={idx} className="flex items-center gap-4 rounded-xl border-0 bg-white/80 backdrop-blur-sm p-4 shadow-soft hover:shadow-medium transition-all duration-200">
                     <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-full ${
+                      className={`flex h-12 w-12 items-center justify-center rounded-xl ${
                         activity.type === "update"
-                          ? "bg-blue-500/10 text-blue-500"
+                          ? "bg-sky-blue/10 text-sky-blue"
                           : activity.type === "assessment"
-                            ? "bg-green-500/10 text-green-500"
+                            ? "bg-mint-green/10 text-mint-green"
                             : activity.type === "message"
-                              ? "bg-purple-500/10 text-purple-500"
-                              : "bg-orange-500/10 text-orange-500"
+                              ? "bg-coral-pink/10 text-coral-pink"
+                              : "bg-sunshine-yellow/10 text-sunshine-yellow"
                       }`}
                     >
                       {activity.type === "update" && <User className="h-5 w-5" />}
@@ -272,10 +318,10 @@ export function OverviewDashboard() {
                       {activity.type === "ai" && <Brain className="h-5 w-5" />}
                     </div>
                     <div className="flex-1">
-                      <p className="font-medium">{activity.student}</p>
-                      <p className="text-sm text-muted-foreground">{activity.action}</p>
+                      <p className="font-semibold text-navy-text">{activity.student}</p>
+                      <p className="text-sm text-soft-text mt-1">{activity.action}</p>
                     </div>
-                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-light-gray text-sm text-soft-text">
                       <Clock className="h-3 w-3" />
                       {activity.time}
                     </div>
@@ -285,33 +331,38 @@ export function OverviewDashboard() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>빠른 작업</CardTitle>
-              <CardDescription>자주 사용하는 기능</CardDescription>
+          <Card className="border-0 bg-gradient-to-br from-white to-sunshine-yellow/3 shadow-medium">
+            <CardHeader className="pb-6">
+              <CardTitle className="flex items-center gap-2 text-navy-text">
+                <div className="p-2 rounded-lg bg-sunshine-yellow/10">
+                  <Settings className="h-5 w-5 text-sunshine-yellow" />
+                </div>
+                빠른 작업
+              </CardTitle>
+              <CardDescription className="text-soft-text">자주 사용하는 기능</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-2">
+            <CardContent className="space-y-3">
               <Link href="/student-profile">
-                <Button variant="outline" className="w-full justify-start bg-transparent">
-                  <User className="mr-2 h-4 w-4" />
+                <Button variant="ghost" className="w-full justify-start h-12 border border-mint-green/20 bg-mint-green/5 text-navy-text hover:bg-mint-green hover:text-white transition-all duration-200">
+                  <User className="mr-3 h-4 w-4" />
                   학생 프로필 보기
                 </Button>
               </Link>
               <Link href="/collaboration">
-                <Button variant="outline" className="w-full justify-start bg-transparent">
-                  <MessageSquare className="mr-2 h-4 w-4" />
+                <Button variant="ghost" className="w-full justify-start h-12 border border-coral-pink/20 bg-coral-pink/5 text-navy-text hover:bg-coral-pink hover:text-white transition-all duration-200">
+                  <MessageSquare className="mr-3 h-4 w-4" />
                   협업 채널 열기
                 </Button>
               </Link>
               <Link href="/ai-intervention">
-                <Button variant="outline" className="w-full justify-start bg-transparent">
-                  <Brain className="mr-2 h-4 w-4" />
+                <Button variant="ghost" className="w-full justify-start h-12 border border-purple-accent/20 bg-purple-accent/5 text-navy-text hover:bg-purple-accent hover:text-white transition-all duration-200">
+                  <Brain className="mr-3 h-4 w-4" />
                   AI 추천 받기
                 </Button>
               </Link>
               <Link href="/analytics">
-                <Button variant="outline" className="w-full justify-start bg-transparent">
-                  <TrendingUp className="mr-2 h-4 w-4" />
+                <Button variant="ghost" className="w-full justify-start h-12 border border-sky-blue/20 bg-sky-blue/5 text-navy-text hover:bg-sky-blue hover:text-white transition-all duration-200">
+                  <TrendingUp className="mr-3 h-4 w-4" />
                   프로젝트 분석 보기
                 </Button>
               </Link>
@@ -320,13 +371,15 @@ export function OverviewDashboard() {
         </div>
 
         {/* Students Needing Attention */}
-        <Card className="mt-6">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <AlertCircle className="h-5 w-5 text-orange-500" />
+        <Card className="mt-8 border-0 bg-gradient-to-br from-white to-coral-pink/5 shadow-medium">
+          <CardHeader className="pb-6">
+            <CardTitle className="flex items-center gap-3 text-navy-text">
+              <div className="p-2 rounded-lg bg-coral-pink/10">
+                <AlertCircle className="h-6 w-6 text-coral-pink" />
+              </div>
               주의가 필요한 학생
             </CardTitle>
-            <CardDescription>즉각적인 개입이 필요한 학생 목록</CardDescription>
+            <CardDescription className="text-soft-text">즉각적인 개입이 필요한 학생 목록</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -344,23 +397,39 @@ export function OverviewDashboard() {
                   priority: "medium",
                 },
               ].map((student, idx) => (
-                <div key={idx} className="flex items-center justify-between rounded-lg border p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500/10">
-                      <User className="h-5 w-5 text-orange-500" />
+                <div key={idx} className="flex items-center justify-between rounded-xl border-0 bg-white/80 backdrop-blur-sm p-5 shadow-soft hover:shadow-medium transition-all duration-200">
+                  <div className="flex items-center gap-4">
+                    <div className={`flex h-14 w-14 items-center justify-center rounded-xl ${
+                      student.priority === "high" 
+                        ? "bg-coral-pink/10" 
+                        : "bg-sunshine-yellow/10"
+                    }`}>
+                      <User className={`h-6 w-6 ${
+                        student.priority === "high" 
+                          ? "text-coral-pink" 
+                          : "text-sunshine-yellow"
+                      }`} />
                     </div>
                     <div>
-                      <p className="font-semibold">{student.name}</p>
-                      <p className="text-sm text-muted-foreground">{student.issue}</p>
+                      <p className="font-bold text-navy-text text-lg">{student.name}</p>
+                      <p className="text-sm text-soft-text mt-1">{student.issue}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-sm text-muted-foreground">{student.lastUpdate}</span>
-                    <Badge variant={student.priority === "high" ? "destructive" : "secondary"}>
+                  <div className="flex items-center gap-4">
+                    <span className="text-sm text-soft-text px-3 py-1 bg-light-gray rounded-full">{student.lastUpdate}</span>
+                    <Badge 
+                      className={`px-3 py-1 text-white font-medium ${
+                        student.priority === "high" 
+                          ? "bg-coral-pink hover:bg-coral-pink/80" 
+                          : "bg-sunshine-yellow hover:bg-sunshine-yellow/80 text-navy-text"
+                      }`}
+                    >
                       {student.priority === "high" ? "긴급" : "주의"}
                     </Badge>
                     <Link href="/student-profile">
-                      <Button size="sm">상세보기</Button>
+                      <Button className="bg-sky-blue hover:bg-sky-blue/80 text-white px-6 py-2 h-10">
+                        상세보기
+                      </Button>
                     </Link>
                   </div>
                 </div>
