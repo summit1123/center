@@ -277,54 +277,26 @@ export function CollaborationChannel() {
   const currentMessages = channelMessages[selectedChannel.id] || []
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-cream-white">
       {/* Sidebar Navigation */}
-      <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r bg-card">
-        <div className="flex h-16 items-center border-b px-6">
-          <BookOpen className="mr-2 h-6 w-6 text-primary" />
-          <span className="text-lg font-semibold">학생 지원 플랫폼</span>
+      <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r bg-white shadow-soft">
+        <div className="flex h-16 items-center border-b border-warm-gray px-6 bg-gradient-to-r from-sky-blue to-mint-green">
+          <BookOpen className="mr-3 h-6 w-6 text-white" />
+          <span className="text-lg font-bold text-white">센터 지원 플랫폼</span>
         </div>
-        <nav className="space-y-1 p-4">
-          <Link href="/">
-            <Button variant="ghost" className="w-full justify-start">
-              <Activity className="mr-2 h-4 w-4" />
-              전체 현황
-            </Button>
-          </Link>
-          <Link href="/student-profile">
-            <Button variant="ghost" className="w-full justify-start">
-              <User className="mr-2 h-4 w-4" />
+        <nav className="space-y-2 p-6">
+          <Link href="/center-platform">
+            <Button variant="ghost" className="w-full justify-start h-12 text-navy-text hover:bg-sky-blue hover:text-white transition-all duration-200">
+              <User className="mr-3 h-5 w-5" />
               학생 프로필
             </Button>
           </Link>
           <Link href="/collaboration">
-            <Button variant="secondary" className="w-full justify-start">
-              <MessageSquare className="mr-2 h-4 w-4" />
+            <Button variant="ghost" className="w-full justify-start h-12 bg-coral-pink/10 text-coral-pink hover:bg-coral-pink hover:text-white transition-all duration-200 font-medium">
+              <MessageSquare className="mr-3 h-5 w-5" />
               협업 채널
             </Button>
           </Link>
-          <Link href="/ai-intervention">
-            <Button variant="ghost" className="w-full justify-start">
-              <Brain className="mr-2 h-4 w-4" />
-              AI 추천 도구
-            </Button>
-          </Link>
-          <Link href="/analytics">
-            <Button variant="ghost" className="w-full justify-start">
-              <TrendingUp className="mr-2 h-4 w-4" />
-              프로젝트 분석
-            </Button>
-          </Link>
-          <Link href="/community">
-            <Button variant="ghost" className="w-full justify-start">
-              <MessagesSquare className="mr-2 h-4 w-4" />
-              커뮤니티
-            </Button>
-          </Link>
-          <Button variant="ghost" className="w-full justify-start">
-            <Settings className="mr-2 h-4 w-4" />
-            설정
-          </Button>
         </nav>
       </aside>
 
